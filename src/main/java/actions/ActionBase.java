@@ -98,7 +98,7 @@ public abstract class ActionBase {
         // URLを構築
         String redirectUrl = request.getContextPath() + "/?action=" + action.getValue();
         if(command != null) {
-            redirectUrl = redirectUrl + "&command=" + "&command=" + command.getValue();
+            redirectUrl = redirectUrl + "&command=" + command.getValue();
         }
         
         // URLへリダイレクト
