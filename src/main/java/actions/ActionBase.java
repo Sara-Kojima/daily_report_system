@@ -48,7 +48,8 @@ public abstract class ActionBase {
      * @throws ServletException
      * @throws IOException
      */
-    protected void invoke()throws ServletException, IOException{
+    protected void invoke() throws ServletException, IOException{
+        
         Method commandMethod;
         try {
             
@@ -115,8 +116,8 @@ public abstract class ActionBase {
         
         // パラメータからtokenの値を取得
         String _token = getRequestParam(AttributeConst.TOKEN);
-        
-        if(_token == null || (_token.equals(getTokenId()))) {
+
+        if(_token == null || !(_token.equals(getTokenId()))) {
             
             // tokenが設定されていない、またはセッションIDと一致しない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
