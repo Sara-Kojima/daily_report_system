@@ -37,19 +37,23 @@
                                     <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
                                 </c:otherwise>
                             </c:choose>
+                        </td>
+                    </tr>
                 </c:forEach>
             </tbody>
         </table>
         
         <div id="pagination">
             （全 ${employees_count} 件）<br />
-            <c:forEach var="i" begin="1" end="${((employee_count - 1) / maxRow) + 1}" step="1">
-                <c:when test="${i == page}">
-                    <c:out value="${i}" />&nbsp;
-                </c:when>
-                <c:otherwise>
-                    <a href="<c:url value='?action=${actEmp}&command=${commIdx}&page=${i}' />"><c:out value="${i}" /></a>&nbsp;
-                </c:otherwise>
+            <c:forEach var="i" begin="1" end="${((employees_count - 1) / maxRow) + 1}" step="1">
+                <c:choose>
+                    <c:when test="${i == page}">
+                        <c:out value="${i}" />&nbsp;
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value='?action=${actEmp}&command=${commIdx}&page=${i}' />"><c:out value="${i}" /></a>&nbsp;
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </div>
         <p><a href="<c:url value='?action=${actEmp}&command=${commNew}' />">新規従業員の登録</a></p>
